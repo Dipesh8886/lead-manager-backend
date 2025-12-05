@@ -11,12 +11,16 @@ await connectDB();
 
 const app = express();
 
-app.use(
-  cors({
-    origin: [process.env.FRONTEND, process.env.FRONTEND_2],
-    credentials: true,
-  })
-);
+const allowedOrigins = [
+  "https://lead-manager-frontend.onrender.com",
+  "http://localhost:5173"
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
+
 app.use(express.json());
 
 
